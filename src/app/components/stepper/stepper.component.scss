@@ -1,0 +1,16 @@
+.stepper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.step-button {
+  width: calc(100% / 3);
+  padding: 10px;
+  border: none;
+  background-color: #2a2a28ee;
+  cursor: pointer;
+}
+
+.step-button.active {
+  background-color: #25242496;
+}

@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Step 2: Select your Config and options</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="configSelect">Config:</label>
+                <select id="configSelect" class="form-control" (change)="onConfigChange($event)">
+                    <option disabled selected>Choose...</option>
+                    <option *ngFor="let config of configs" [ngValue]="config.description"
+                        [selected]="config.description === selectedConfigOption">{{
+                        config.description }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngIf="selectedConfig" class="col-12">
+            <div class="form-group">
+                <ng-container *ngIf="selectedConfig">
+                    <label>Range:</label>
+                    <span>{{ selectedConfig.range }}</span>
+                    <span> miles</span>
+                    <span> - </span>
+                </ng-container>
+
+                <ng-container *ngIf="selectedConfig">
+                    <label>Max Speed:</label>
+                    <span>{{ selectedConfig.speed }}</span>
+                    <span> - </span>
+                </ng-container>
+
+                <ng-container *ngIf="selectedConfig">
+                    <label>Cost:</label>
+                    <span>{{ selectedConfig.price | currency:'USD' }}</span>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="includeYokeAvailable || includeTowHitchAvailable" class="row">
+        <div class="col-md-6">
+            <div *ngIf="includeTowHitchAvailable" class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label" for="includeTowHitch">Tow
+                        Hitch?</label>
+                    <input type="checkbox" class="form-check-input" (change)="setSelectedModel()" id="includeTowHitch"
+                        [(ngModel)]="includeTowHitch">
+                </div>
+            </div>
+
+            <div *ngIf="includeYokeAvailable" class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label" for="includeYoke">Yoke
+                        Steering Wheel?</label>
+                    <input type="checkbox" class="form-check-input" (change)="setSelectedModel()" id="includeYoke"
+                        [(ngModel)]="includeYoke">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container-fluid" *ngIf="selectedImageUrl">
+        <div class="row">
+            <div class="col-12">
+                <app-car-image [imageUrl]="selectedImageUrl"></app-car-image>
+            </div>
+        </div>
+    </div>
+</div>

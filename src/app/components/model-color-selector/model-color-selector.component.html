@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Step 1: Choose your Model and Color</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <label for="modelSelect">Model:</label>
+                <select id="modelSelect" (change)="onModelChange($event)">
+                    <option value disabled selected>Choose...</option>
+                    <option *ngFor="let model of models"
+                        [value]="model.description">{{ model.description
+                        }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div *ngIf="selectedModel">
+                <label for="colorSelect">Color:</label>
+                <select id="colorSelect" (change)="onColorChange($event)">
+                    <option value disabled [selected]="!selectedColor"></option>
+                    <option *ngFor="let color of colors"
+                        [value]="color.description">{{ color.description
+                        }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container-fluid" *ngIf="selectedImageUrl">
+            <div class="row">
+                <div class="col-12">
+                    <app-car-image
+                        [imageUrl]="selectedImageUrl"></app-car-image>
+                </div>
+            </div>
+        </div>
+    </div>

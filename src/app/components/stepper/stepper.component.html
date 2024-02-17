@@ -1,0 +1,6 @@
+<div class="stepper">
+  <button class="step-button" [class.active]="step === 1" (click)="navigateToStep(1)">Step 1</button>
+  <button class="step-button" [class.active]="step === 2" (click)="navigateToStep(2)" [disabled]="!step1Completed">Step 2</button>
+  <button class="step-button" [class.active]="step === 3" (click)="navigateToStep(3)" [disabled]="!step2Completed || !step1Completed">Step 3</button>
+</div>
+

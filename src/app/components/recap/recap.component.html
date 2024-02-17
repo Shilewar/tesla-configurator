@@ -1,0 +1,61 @@
+<div *ngIf="selectedModel" class="container recap">
+  <h2>Step 3: Summary</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Your Tesla {{selectedModel.selectedModelDescription}}</h5>
+      <p><strong>{{selectedModel.selectedConfigDescription}}</strong></p>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Range:</label>
+          <span>{{selectedModel.selectedRange}}</span>
+          <span> miles</span>
+          <span> - </span>
+        </div>
+        <div class="col-md-3">
+          <label>Max Speed:</label>
+          <span>{{selectedModel.selectedSpeed}}</span>
+        </div>
+      </div>
+      <p><strong>{{selectedModel.selectedColor}} color</strong></p>
+      <p *ngIf="selectedModel.selectedYoke"><strong>Yoke Steering
+          Wheel:</strong></p>
+      <p *ngIf="selectedModel.selectedTowHitch"><strong>Tow Hitch
+          Package:</strong></p>
+    </div>
+    <div class="col-md-6">
+      <div class="text-right">
+        <p class="pdb"></p>
+        <p class="pdb-5" *ngIf="selectedModel.selectedModelPrice">{{selectedModel.selectedModelPrice
+          | currency:'USD':'symbol':'1.2-2'}}</p>
+        <p class="pdb-4" *ngIf="selectedModel.selectedColorPrice">{{selectedModel.selectedColorPrice
+          | currency:'USD':'symbol':'1.2-2'}}</p>
+        <p class="pdb-3" *ngIf="selectedModel.selectedYoke">{{selectedModel.selectedYoke |
+          currency:'USD':'symbol':'1.2-2'}}</p>
+        <p *ngIf="selectedModel.selectedTowHitch">{{selectedModel.selectedTowHitch
+          | currency:'USD':'symbol':'1.2-2'}}</p>
+
+      </div>
+    </div>
+
+  </div>
+  <hr> <!-- Dotted line -->
+  <div class="row">
+    <div class="col-10">
+      <p><strong>Total Cost:</strong> </p>
+    </div>
+    <div class="col-2 pd-43">
+      <p> {{totalCost | currency:'USD':'symbol':'1.2-2'}} </p>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="container-fluid" *ngIf="selectedImageUrl">
+    <div class="row">
+      <div class="col-12">
+        <app-car-image [imageUrl]="selectedImageUrl"></app-car-image>
+      </div>
+    </div>
+  </div>
+</div>
